@@ -1,0 +1,24 @@
+import requests
+import json
+
+
+url = "https://student-info-api.netlify.app/.netlify/functions/submit_student_info"
+
+
+data = {
+    "UCID": "may23", 
+    "first_name": "Mark",
+    "last_name": "Youssef",
+    "github_username": "Mark-5555",  
+    "discord_username": "thegreatmark#2353",    
+    "favorite_cartoon": "Tom and Jerry",
+    "favorite_language": "C++",
+    "movie_or_game_or_book": "The Wolf of Wall Street"
+}
+
+try:
+    response = requests.post(url, json=data, headers={"Content-Type": "application/json"})
+    print("Status Code:", response.status_code)
+    print("Response Body:", response.text)
+except requests.exceptions.RequestException as e:
+    print("Error:", e)
